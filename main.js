@@ -6,40 +6,47 @@
 // Individuate gli elementi di cui avete bisogno.
 // Usate inizialmente prompt e  console.log() , tanti console.log(), se volete aggiungere effetti particolari al DOM fatelo solo in un secondo momento e in cartella bonus :wink:
 
+var numAlert = [];
+var arrayNumutente = [];
+var numeriesatti = [];
+randomAlert();
+setTimeout(userNum, 1000);
+
 //funzione numeri casuali
 function getRandom(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min; //Il max è incluso e il min è incluso 
-  }
+}
 
 //creare funzione che crea 5 numeri random
-var numAlert = [];
+
 function randomAlert() {
-for (var i = 0; i < 5; i++) {
-    var randNum = getRandom(1,100);
-    numAlert.push(randNum);
+    for (var i = 0; i < 5; i++) {
+        var randNum = getRandom(1, 100);
+        numAlert.push(randNum);
     }
     alert(numAlert)
-    console.log("numerialert: "+ numAlert);
+    console.log("numerialert: " + numAlert);
 }
- randomAlert();
 
 //creo funzione che dopo 30 secondi dalla scomparsa dell'alert faccia comparire 4 prompt
-var arrayNumutente = [];
+
 function userNum() {
     for (var i = 0; i < 5; i++) {
         var inputNum = parseInt(prompt('Numero'));
         arrayNumutente.push(inputNum);
     }
     console.log(arrayNumutente);
+    //creo un controllo sugli elementi delle due 
+    for (var i = 0; i < numAlert.length; i++) {
+        for (var j = 0; j < arrayNumutente.length; j++) {
+            if (numAlert[i] == arrayNumutente[j]) {
+                numeriesatti.push(numAlert[i]);
+            }
+        }
+    }
+    console.log("I numeri che hai indovinato sono: " + numeriesatti.length + ";" + " I numeri sono i seguenti: " + numeriesatti + ";");
 }
-//inserire funzione in un timingEvent 
-setTimeout(userNum, 1000);
 
-
-
-
-
-//inserire funzione in un timingEvent 
 
